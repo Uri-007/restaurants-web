@@ -72,7 +72,7 @@ export default function Pagination({
         ) : (
           <button
             key={page}
-            onClick={() => onPageChange(page)}
+            onClick={() => onPageChange(page as number)}
             className={`min-w-[40px] px-3 py-2 rounded-xl text-sm font-semibold 
               cursor-pointer transition
               ${

@@ -28,8 +28,9 @@ export default function RestaurantCard({ restaurant }: Props) {
           </div>
 
           {/* Rating */}
-          <div className="flex items-center gap-1 px-3 py-1.5 rounded-xl bg-green-500 text-white text-sm font-semibold shadow">
-            {restaurant.rating}
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-500/90 text-white text-sm font-semibold shadow-sm">
+            <Icon icon="material-symbols:star" width="18" height="18" />
+            <span>{restaurant.rating}</span>
           </div>
         </div>
 
