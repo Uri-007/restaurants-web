@@ -1,28 +1,27 @@
 import "./App.css";
-import MapView from "./components/MapView";
 import RestaurantList from "./components/RestaurantList";
+import Loading from "./components/Loading";
 import { useRestaurants } from "./hooks/useRestaurants";
 
 function App() {
   const { data, loading } = useRestaurants();
 
-  if (loading) return <p className="p-6">Cargando...</p>;
+  if (loading) {
+    return <Loading text="Cargando restaurantes..." />;
+  }
 
   return (
-    <div className="p-6 space-y-10">
-      <h1 className="text-3xl font-bold">Restaurants</h1>
+    <main className="p-6 space-y-12">
+      <header>
+        <h1 className="text-3xl font-bold text-gray-800">Restaurants</h1>
+        <p className="text-gray-500 text-sm">
+          Explora restaurantes cercanos y descubre nuevas opciones
+        </p>
+      </header>
 
       {/* List + Pagination */}
       <RestaurantList restaurants={data} />
-
-      {/* Map */}
-      <MapView
-        restaurants={data}
-        center={{ lat: 19.4326, lng: -99.1332 }}
-        radius={1000}
-        minRating={3}
-      />
-    </div>
+    </main>
   );
 }
 
