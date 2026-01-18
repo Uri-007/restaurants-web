@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import type { Restaurant } from "../types/restaurant";
 
@@ -6,6 +7,8 @@ interface Props {
 }
 
 export default function RestaurantCard({ restaurant }: Props) {
+  const [liked, setLiked] = useState(false);
+
   return (
     <div className="relative bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 overflow-hidden">
       {/* Decorative gradient */}
@@ -38,15 +41,39 @@ export default function RestaurantCard({ restaurant }: Props) {
           {restaurant.address.street}, {restaurant.address.city}
         </p>
 
-        {/* Action */}
-        <a
-          href={`https://www.facebook.com/sharer/sharer.php?u=${restaurant.contact.site}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold shadow hover:bg-blue-700 transition-all"
-        >
-          Compartir
-        </a>
+        {/* Actions */}
+        <div className="flex items-center justify-between gap-3">
+          {/* Share */}
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${restaurant.contact.site}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold shadow hover:bg-blue-700 transition-all"
+          >
+            <Icon icon="mdi:facebook" className="text-lg" />
+            Compartir
+          </a>
+
+          {/* Like (simulado) */}
+          <button
+            onClick={() => setLiked(!liked)}
+            className={`
+              inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold
+              transition-all cursor-pointer
+              ${
+                liked
+                  ? "bg-pink-100 text-pink-600 shadow-inner"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              }
+            `}
+          >
+            <Icon
+              icon={liked ? "mdi:heart" : "mdi:heart-outline"}
+              className="text-lg"
+            />
+            Me gusta
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -12,10 +12,11 @@ function App() {
 
   return (
     <main className="p-6 space-y-12">
-      <header>
-        <h1 className="text-3xl font-bold text-gray-800">Restaurants</h1>
-        <p className="text-gray-500 text-sm">
-          Explora restaurantes cercanos y descubre nuevas opciones
+      <header className="space-y-2">
+        <h1 className="text-3xl font-bold text-gray-800">Melp Restaurants</h1>
+        <p className="text-gray-500 text-sm max-w-xl">
+          Descubre los mejores restaurantes cerca de ti, ordénalos por
+          calificación o nombre y encuentra nuevas recomendaciones en tu zona.
         </p>
       </header>
 
